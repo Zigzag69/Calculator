@@ -69,9 +69,9 @@ class ViewController: UIViewController {
             case "-":
                 operateWithTwoOperands{$0 - $1}
             case "✕":
-                operateWithTwoOperands{$0 + $1}
+                operateWithTwoOperands{$0 * $1}
             case "∕":
-                operateWithTwoOperands{$0 + $1}
+                operateWithTwoOperands{$0 / $1}
         default: break
         }
     }
