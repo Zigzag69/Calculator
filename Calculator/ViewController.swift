@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var firstLabel: UILabel!
     var stillTyping = false
+    var dotCheck = false
     var x: Double = 0
     var y: Double = 0
     var operationSign: String = ""
@@ -26,11 +27,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var secondLabel: UILabel!
-    
-    @IBOutlet weak var thirdLabel: UILabel!
-    
-
 
     @IBAction func numbersBut(_ sender: UIButton) {
         let numbers = sender.currentTitle!
@@ -58,6 +54,39 @@ class ViewController: UIViewController {
         stillTyping = false
     }
     
+   
+    @IBAction func clear(_ sender: UIButton) {
+        x = 0
+        y = 0
+        currentInput = 0
+        firstLabel.text = "0"
+        stillTyping = false
+        operationSign = ""
+    }
+    
+    
+    @IBAction func plusMinus(_ sender: UIButton) {
+        currentInput = -currentInput
+    }
+    
+    
+    @IBAction func percent(_ sender: UIButton) {
+        if x == 0 {
+            currentInput = currentInput / 100
+        }
+        else {
+            y = x * currentInput / 100
+        }
+        stillTyping = false
+    }
+    
+    
+    @IBAction func dot(_ sender: UIButton) {
+        
+    }
+    
+    
+    
     @IBAction func result(_ sender: UIButton) {
         if stillTyping {
             y = currentInput
@@ -75,11 +104,5 @@ class ViewController: UIViewController {
         default: break
         }
     }
-    
-    
 
-
-    
-    
-    
 }
