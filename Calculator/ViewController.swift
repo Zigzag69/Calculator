@@ -34,6 +34,11 @@ class ViewController: UIViewController {
         }
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
 
     @IBAction func numbersBut(_ sender: UIButton) {
         let numbers = sender.currentTitle!
@@ -99,9 +104,7 @@ class ViewController: UIViewController {
             firstLabel.text = "0."
         }
     }
-    
-    
-    
+        
     @IBAction func result(_ sender: UIButton) {
         
         if stillTyping {
