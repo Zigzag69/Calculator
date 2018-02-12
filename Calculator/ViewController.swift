@@ -22,7 +22,14 @@ class ViewController: UIViewController {
             return Double(firstLabel.text!)!
         }
         set {
-            firstLabel.text	= "\(newValue)"
+            let value = "\(newValue)"
+            let valueArray = value.components(separatedBy: ".")
+            if valueArray[1] == "0" {
+                firstLabel.text = "\(valueArray[0])"
+            }
+            else {
+                firstLabel.text = "\(newValue)"
+            }
             stillTyping = false
         }
     }
@@ -47,6 +54,7 @@ class ViewController: UIViewController {
         operationSign = sender.currentTitle!
         x = currentInput
         stillTyping = false
+        dotCheck = false
         }
     
     func operateWithTwoOperands (operation: (Double, Double) -> Double) {
@@ -62,6 +70,7 @@ class ViewController: UIViewController {
         firstLabel.text = "0"
         stillTyping = false
         operationSign = ""
+        dotCheck = false
     }
     
     
@@ -82,15 +91,24 @@ class ViewController: UIViewController {
     
     
     @IBAction func dot(_ sender: UIButton) {
-        
+        if stillTyping && !dotCheck {
+            firstLabel.text = firstLabel.text! + "."
+            dotCheck = true
+        }
+        else if !stillTyping && !dotCheck {
+            firstLabel.text = "0."
+        }
     }
     
     
     
     @IBAction func result(_ sender: UIButton) {
+        
         if stillTyping {
             y = currentInput
         }
+        
+        dotCheck = false
         
         switch operationSign {
             case "+":
