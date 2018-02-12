@@ -121,7 +121,18 @@ class ViewController: UIViewController {
             case "✕":
                 operateWithTwoOperands{$0 * $1}
             case "∕":
-                operateWithTwoOperands{$0 / $1}
+                if y != 0 {
+                   operateWithTwoOperands{$0 / $1}
+                }
+                else {
+                    x = 0
+                    y = 0
+                    currentInput = 0
+                    firstLabel.text = "Error"
+                    stillTyping = false
+                    operationSign = ""
+                    dotCheck = false
+            }
         default: break
         }
     }
